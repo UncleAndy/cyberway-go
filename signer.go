@@ -10,7 +10,7 @@ import (
 
 	"strings"
 
-	"github.com/eoscanada/eos-go/ecc"
+	"github.com/UncleAndy/cyberway-go/ecc"
 )
 
 type Signer interface {

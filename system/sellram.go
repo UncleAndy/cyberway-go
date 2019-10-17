@@ -1,7 +1,7 @@
 package system
 
 import (
-	eos "github.com/eoscanada/eos-go"
+	eos "github.com/UncleAndy/cyberway-go"
 )
 
 // NewSellRAM will sell at current market price a given number of

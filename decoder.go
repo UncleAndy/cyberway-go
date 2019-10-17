@@ -15,7 +15,7 @@ import (
 
 	"io/ioutil"
 
-	"github.com/eoscanada/eos-go/ecc"
+	"github.com/UncleAndy/cyberway-go/ecc"
 	"go.uber.org/zap"
 )
 

@@ -7,8 +7,8 @@ import (
 	"io"
 	"strings"
 
-	"github.com/eoscanada/eos-go/btcsuite/btcd/btcec"
-	"github.com/eoscanada/eos-go/btcsuite/btcutil"
+	"github.com/UncleAndy/cyberway-go/btcsuite/btcd/btcec"
+	"github.com/UncleAndy/cyberway-go/btcsuite/btcutil"
 )
 
 const PrivateKeyPrefix = ""

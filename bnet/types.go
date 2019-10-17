@@ -1,8 +1,8 @@
 package bnet
 
 import (
-	eos "github.com/eoscanada/eos-go"
-	"github.com/eoscanada/eos-go/ecc"
+	eos "github.com/UncleAndy/cyberway-go"
+	"github.com/UncleAndy/cyberway-go/ecc"
 )
 
 type BNetMessageType byte
