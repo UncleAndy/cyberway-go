@@ -1,6 +1,6 @@
 package system
 
-import "github.com/UncleAndy/cyberway-go"
+import eos "github.com/UncleAndy/cyberway-go"
 
 // NewNonce returns a `nonce` action that lives on the
 // `eosio.bios` contract. It should exist only when booting a new

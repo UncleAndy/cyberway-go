@@ -1,7 +1,7 @@
 package msig
 
 import (
-	"github.com/UncleAndy/cyberway-go"
+	eos "github.com/UncleAndy/cyberway-go"
 )
 
 func init() {

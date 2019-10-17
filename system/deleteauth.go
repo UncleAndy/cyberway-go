@@ -1,6 +1,6 @@
 package system
 
-import "github.com/UncleAndy/cyberway-go"
+import eos "github.com/UncleAndy/cyberway-go"
 
 // NewDeleteAuth creates an action from the `eosio.system` contract
 // called `deleteauth`.

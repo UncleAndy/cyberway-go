@@ -19,7 +19,7 @@ import (
 
 	"bufio"
 
-	"github.com/UncleAndy/cyberway-go"
+	eos "github.com/UncleAndy/cyberway-go"
 	"github.com/UncleAndy/cyberway-go/ecc"
 )
 

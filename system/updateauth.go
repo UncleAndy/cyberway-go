@@ -1,6 +1,8 @@
 package system
 
-import "github.com/UncleAndy/cyberway-go"
+import (
+	eos "github.com/UncleAndy/cyberway-go"
+)
 
 // NewUpdateAuth creates an action from the `eosio.system` contract
 // called `updateauth`.

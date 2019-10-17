@@ -9,7 +9,7 @@ import (
 
 	"time"
 
-	"github.com/UncleAndy/cyberway-go"
+	eos "github.com/UncleAndy/cyberway-go"
 )
 
 type Client struct {

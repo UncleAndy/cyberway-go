@@ -1,7 +1,7 @@
 package p2p
 
 import (
-	"github.com/UncleAndy/cyberway-go"
+	eos "github.com/UncleAndy/cyberway-go"
 )
 
 type Envelope struct {
