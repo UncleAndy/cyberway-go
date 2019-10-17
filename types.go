@@ -27,6 +27,7 @@ type AccountName Name
 type PermissionName Name
 type ActionName Name
 type TableName Name
+type IndexName Name
 type ScopeName Name
 
 func AN(in string) AccountName    { return AccountName(in) }

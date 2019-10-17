@@ -11,10 +11,10 @@ import (
 	"golang.org/x/crypto/ripemd160"
 )
 
-const PublicKeyPrefix = "PUB_"
-const PublicKeyK1Prefix = "PUB_K1_"
-const PublicKeyR1Prefix = "PUB_R1_"
-const PublicKeyPrefixCompat = "EOS"
+const PublicKeyPrefix = "GLS"
+const PublicKeyK1Prefix = "GLS"
+const PublicKeyR1Prefix = "GLS"
+const PublicKeyPrefixCompat = "GLS"
 
 type innerPublicKey interface {
 	key(content []byte) (*btcec.PublicKey, error)

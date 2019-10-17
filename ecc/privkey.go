@@ -11,7 +11,7 @@ import (
 	"github.com/eoscanada/eos-go/btcsuite/btcutil"
 )
 
-const PrivateKeyPrefix = "PVT_"
+const PrivateKeyPrefix = ""
 
 func NewRandomPrivateKey() (*PrivateKey, error) {
 	return newRandomPrivateKey(cryptorand.Reader)
