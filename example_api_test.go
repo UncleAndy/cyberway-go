@@ -1,4 +1,4 @@
-package eos_test
+package cyberway_test
 
 import "os"
 

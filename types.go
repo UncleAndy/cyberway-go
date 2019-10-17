@@ -1,4 +1,4 @@
-package eos
+package cyberway
 
 import (
 	"encoding/base64"
