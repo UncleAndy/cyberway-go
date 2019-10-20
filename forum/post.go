@@ -4,35 +4,40 @@ import (
 	eos "github.com/UncleAndy/cyberway-go"
 )
 
-// NewPost is an action representing a simple message to be posted
+// NewMessage is an action representing a simple message to be posted
 // through the chain network.
-func NewPost(poster eos.AccountName, postUUID, content string, replyToPoster eos.AccountName, replyToPostUUID string, certify bool, jsonMetadata string) *eos.Action {
+func NewMessage(msg *MessageAction) *eos.Action {
 	a := &eos.Action{
 		Account: ForumAN,
 		Name:    ActN("post"),
 		Authorization: []eos.PermissionLevel{
 			{Actor: poster, Permission: eos.PermissionName("active")},
 		},
-		ActionData: eos.NewActionData(Post{
-			Poster:          poster,
-			PostUUID:        postUUID,
-			Content:         content,
-			ReplyToPoster:   replyToPoster,
-			ReplyToPostUUID: replyToPostUUID,
-			Certify:         certify,
-			JSONMetadata:    jsonMetadata,
-		}),
+		ActionData: eos.NewActionData(msg),
 	}
 	return a
 }
 
 // Post represents the `eosio.forum::post` action.
-type Post struct {
-	Poster          eos.AccountName `json:"poster"`
-	PostUUID        string          `json:"post_uuid"`
-	Content         string          `json:"content"`
-	ReplyToPoster   eos.AccountName `json:"reply_to_poster"`
-	ReplyToPostUUID string          `json:"reply_to_post_uuid"`
-	Certify         bool            `json:"certify"`
-	JSONMetadata    string          `json:"json_metadata"`
+type MessageAction struct {
+	Id       *MessageIdType `json:"message_id"`
+	ParentId *MessageIdType `json:"parent_id"`
+
+	Language string `json:"languagemssg"`
+	Header   string `json:"headermssg"`
+	Body     string `json:"bodymssg"`
+
+	Tags         []string `json:"tags"`
+	JsonMetadata string   `json:"jsonmetadata"`
+
+	TokenProp     int      `json:"tokenprop"`
+	MaxPayout     *int     `json:"max_payout"`
+	Beneficiaries []eos.AccountName `json:"beneficiaries"`
+	CuratorsPrcnt int      `json:"curators_prcnt"`
+	VestPayment   bool     `json:"vestpayment"`
+}
+
+type MessageIdType struct {
+	Author		eos.AccountName	`json:"author"`
+	Permlink	string			`json:"permlink"`
 }
