@@ -11,7 +11,7 @@ func NewMessage(msg *MessageAction) *eos.Action {
 		Account: ForumAN,
 		Name:    ActN("post"),
 		Authorization: []eos.PermissionLevel{
-			{Actor: msg.Id.Author, Permission: eos.PermissionName("active")},
+			{Actor: msg.Id.Author, Permission: eos.PermissionName("posting")},
 		},
 		ActionData: eos.NewActionData(msg),
 	}
