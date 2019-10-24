@@ -30,10 +30,10 @@ type MessageAction struct {
 	Tags         []string `json:"tags"`
 	JsonMetadata string   `json:"jsonmetadata"`
 
-	TokenProp     int      `json:"tokenprop"`
-	MaxPayout     *int     `json:"max_payout"`
+	TokenProp     uint32      `json:"tokenprop"`
+	MaxPayout     *uint32     `json:"max_payout"`
 	Beneficiaries []eos.AccountName `json:"beneficiaries"`
-	CuratorsPrcnt int      `json:"curators_prcnt"`
+	CuratorsPrcnt uint32      `json:"curators_prcnt"`
 	VestPayment   bool     `json:"vestpayment"`
 }
 
