@@ -40,7 +40,7 @@ func newRandomPrivateKey(randSource io.Reader) (*PrivateKey, error) {
 func NewPrivateKey(wif string) (*PrivateKey, error) {
 	// Strip potential prefix, and set curve
 	var privKeyMaterial string
-	if strings.HasPrefix(wif, PrivateKeyPrefix) { // "PVT_"
+	if PrivateKeyPrefix != "" && strings.HasPrefix(wif, PrivateKeyPrefix) { // "PVT_"
 		privKeyMaterial = wif[len(PrivateKeyPrefix):]
 
 		curvePrefix := privKeyMaterial[:3]
