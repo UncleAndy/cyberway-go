@@ -12,8 +12,8 @@ import (
 )
 
 const PublicKeyPrefix = "GLS"
-const PublicKeyK1Prefix = "GLS"
-const PublicKeyR1Prefix = "GLS"
+const PublicKeyK1Prefix = "GLS_K1"
+const PublicKeyR1Prefix = "GLS_R1"
 const PublicKeyPrefixCompat = "GLS"
 
 type innerPublicKey interface {
