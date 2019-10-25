@@ -9,7 +9,7 @@ import (
 func NewMessage(msg *MessageAction) *eos.Action {
 	a := &eos.Action{
 		Account: ForumAN,
-		Name:    ActN("post"),
+		Name:    ActN("createmssg"),
 		Authorization: []eos.PermissionLevel{
 			{Actor: msg.Id.Author, Permission: eos.PermissionName("posting")},
 		},
