@@ -41,6 +41,10 @@ type CreateMssg struct {
 	Message
 }
 
+type UpdateMssg struct {
+	Message
+}
+
 type Asset string
 
 type PercentT uint16

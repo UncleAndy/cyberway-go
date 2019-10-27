@@ -3,8 +3,8 @@ package forum
 import eos "github.com/UncleAndy/cyberway-go"
 
 func init() {
-	eos.RegisterAction(ForumAN, ActN("createmssg"), MessageAction{})
-	eos.RegisterAction(ForumAN, ActN("updatemssg"), MessageAction{})
+	eos.RegisterAction(ForumAN, ActN("createmssg"), CreateMssg{})
+	eos.RegisterAction(ForumAN, ActN("updatemssg"), UpdateMssg{})
 	eos.RegisterAction(ForumAN, ActN("clnproposal"), CleanProposal{})
 	eos.RegisterAction(ForumAN, ActN("expire"), Expire{})
 	eos.RegisterAction(ForumAN, ActN("propose"), Propose{})
