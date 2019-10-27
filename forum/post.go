@@ -30,8 +30,8 @@ type Message struct {
 	Tags         	[]string 		`json:"tags"`
 	JsonMetadata 	string   		`json:"jsonmetadata"`
 
-	TokenProp     	PercentT     	`json:"tokenprop"`
-	MaxPayout     	Asset     		`json:"max_payout,ommitempty"`
+	TokenProp     	uint16	     	`json:"tokenprop"`
+	MaxPayout     	string     		`json:"max_payout,ommitempty"`
 	Beneficiaries 	[]Beneficiary 	`json:"beneficiaries"`
 	CuratorsPrcnt 	uint16      	`json:"curators_prcnt,ommitempty"`
 	VestPayment   	bool     		`json:"vestpayment"`
@@ -44,10 +44,6 @@ type CreateMssg struct {
 type UpdateMssg struct {
 	Message
 }
-
-type Asset string
-
-type PercentT uint16
 
 type Beneficiary struct {
 	Account		eos.Name	`json:"account"`
