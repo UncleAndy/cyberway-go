@@ -47,7 +47,7 @@ type UpdateMssg struct {
 
 type Beneficiary struct {
 	Account		eos.Name	`json:"account"`
-	Weight		PercentT	`json:"weight"`
+	Weight		uint16		`json:"weight"`
 }
 
 type MssgId struct {
