@@ -6,7 +6,7 @@ import (
 
 // NewMessage is an action representing a simple message to be posted
 // through the chain network.
-func CreateMessage(msg *CreateMssg) *eos.Action {
+func CreateMessage(msg *Message) *eos.Action {
 	a := &eos.Action{
 		Account: ForumAN,
 		Name:    ActN("createmssg"),
@@ -20,10 +20,10 @@ func CreateMessage(msg *CreateMssg) *eos.Action {
 
 // Post represents the `eosio.forum::post` action.
 type Message struct {
-	Id       		cyberway.MssgId 			`json:"message_id"`
-	ParentId 		cyberway.MssgId 			`json:"parent_id"`
+	Id       		eos.MssgId 					`json:"message_id"`
+	ParentId 		eos.MssgId 					`json:"parent_id"`
 
-	Beneficiaries 	[]cyberway.Beneficiary 		`json:"beneficiaries"`
+	Beneficiaries 	[]eos.Beneficiary 			`json:"beneficiaries"`
 
 	TokenProp     	uint16	     				`json:"tokenprop"`
 	VestPayment   	bool     					`json:"vestpayment"`
