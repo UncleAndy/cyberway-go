@@ -34,6 +34,16 @@ func AN(in string) AccountName    { return AccountName(in) }
 func ActN(in string) ActionName   { return ActionName(in) }
 func PN(in string) PermissionName { return PermissionName(in) }
 
+type Beneficiary struct {
+	Account		AccountName		`json:"account"`
+	Weight		uint16			`json:"weight"`
+}
+
+type MssgId struct {
+	Author		AccountName		`json:"author"`
+	Permlink	string			`json:"permlink"`
+}
+
 type AccountResourceLimit struct {
 	Used      Int64 `json:"used"`
 	Available Int64 `json:"available"`

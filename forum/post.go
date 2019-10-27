@@ -20,37 +20,21 @@ func CreateMessage(msg *CreateMssg) *eos.Action {
 
 // Post represents the `eosio.forum::post` action.
 type Message struct {
-	Id       		MssgId 			`json:"message_id"`
-	ParentId 		MssgId 			`json:"parent_id"`
+	Id       		cyberway.MssgId 			`json:"message_id"`
+	ParentId 		cyberway.MssgId 			`json:"parent_id"`
 
-	Language 		string 			`json:"languagemssg"`
-	Header   		string 			`json:"headermssg"`
-	Body     		string 			`json:"bodymssg"`
+	Beneficiaries 	[]cyberway.Beneficiary 		`json:"beneficiaries"`
 
-	Tags         	[]string 		`json:"tags"`
-	JsonMetadata 	string   		`json:"jsonmetadata"`
+	TokenProp     	uint16	     				`json:"tokenprop"`
+	VestPayment   	bool     					`json:"vestpayment"`
 
-	TokenProp     	uint16	     	`json:"tokenprop"`
-	MaxPayout     	string     		`json:"max_payout,ommitempty"`
-	Beneficiaries 	[]Beneficiary 	`json:"beneficiaries"`
-	CuratorsPrcnt 	uint16      	`json:"curators_prcnt,ommitempty"`
-	VestPayment   	bool     		`json:"vestpayment"`
-}
+	Header   		string 						`json:"headermssg"`
+	Body     		string 						`json:"bodymssg"`
+	Language 		string 						`json:"languagemssg"`
 
-type CreateMssg struct {
-	Message
-}
+	Tags         	[]string 					`json:"tags"`
+	JsonMetadata 	string   					`json:"jsonmetadata"`
 
-type UpdateMssg struct {
-	Message
-}
-
-type Beneficiary struct {
-	Account		eos.Name	`json:"account"`
-	Weight		uint16		`json:"weight"`
-}
-
-type MssgId struct {
-	Author		eos.AccountName	`json:"author"`
-	Permlink	string			`json:"permlink"`
+	CuratorsPrcnt 	uint16      				`json:"curators_prcnt,ommitempty"`
+	MaxPayout     	string     					`json:"max_payout,ommitempty"`
 }
