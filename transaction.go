@@ -29,6 +29,8 @@ type TransactionHeader struct {
 
 	MaxNetUsageWords Varuint32 `json:"max_net_usage_words"`
 	MaxCPUUsageMS    uint8     `json:"max_cpu_usage_ms"`
+	MaxRamKbytes	 Varuint32 `json:"max_ram_kbytes"`
+	MaxStorageKbytes Varuint32 `json:"max_storage_kbytes"`
 	DelaySec         Varuint32 `json:"delay_sec"` // number of secs to delay, making it cancellable for that duration
 }
 
