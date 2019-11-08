@@ -19,7 +19,7 @@ func NewVote(voter, contentAuthor, contentPermlink string, weight int) *eos.Acti
 				Author:   eos.AccountName(contentAuthor),
 				Permlink: contentPermlink,
 			},
-			Weight:			weight,
+			Weight:			uint16(weight),
 		}),
 	}
 	return a
@@ -29,5 +29,5 @@ func NewVote(voter, contentAuthor, contentPermlink string, weight int) *eos.Acti
 type Vote struct {
 	Voter        eos.AccountName `json:"voter"`
 	MessageId	 eos.MssgId		 `json:"message_id"`
-	Weight		 int			 `json:"weight"`
+	Weight		 uint16			 `json:"weight"`
 }
