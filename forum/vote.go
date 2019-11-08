@@ -6,7 +6,7 @@ import (
 
 // NewVote is an action representing a simple vote to be broadcast
 // through the chain network.
-func NewVote(voter, contentAuthor, contentPermlink string, weight int16) *eos.Action {
+func NewVote(voter, contentAuthor, contentPermlink string, weight int) *eos.Action {
 	a := &eos.Action{
 		Account: ForumAN,
 		Name:    ActN("upvote"),
@@ -29,5 +29,5 @@ func NewVote(voter, contentAuthor, contentPermlink string, weight int16) *eos.Ac
 type Vote struct {
 	Voter        eos.AccountName `json:"voter"`
 	MessageId	 eos.MssgId		 `json:"message_id"`
-	Weight		 int16			 `json:"weight"`
+	Weight		 int			 `json:"weight"`
 }
