@@ -18,6 +18,18 @@ func CreateMessage(msg *Message) *eos.Action {
 	return a
 }
 
+func UpdateMessage(msg *Message) *eos.Action {
+	a := &eos.Action{
+		Account: ForumAN,
+		Name:    ActN("updatemssg"),
+		Authorization: []eos.PermissionLevel{
+			{Actor: msg.Id.Author, Permission: eos.PermissionName("posting")},
+		},
+		ActionData: eos.NewActionData(msg),
+	}
+	return a
+}
+
 // Post represents the `eosio.forum::post` action.
 type Message struct {
 	Id       		eos.MssgId 					`json:"message_id"`
