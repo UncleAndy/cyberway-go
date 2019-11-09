@@ -2,16 +2,16 @@ package token
 
 import eos "github.com/UncleAndy/cyberway-go"
 
-func NewTransfer(from, to eos.AccountName, quantity eos.Asset, memo string) *eos.Action {
+func NewTransfer(from, to string, quantity eos.Asset, memo string) *eos.Action {
 	return &eos.Action{
-		Account: AN("eosio.token"),
+		Account: AN("cyber.token"),
 		Name:    ActN("transfer"),
 		Authorization: []eos.PermissionLevel{
-			{Actor: from, Permission: PN("active")},
+			{Actor: eos.AccountName(from), Permission: PN("active")},
 		},
 		ActionData: eos.NewActionData(Transfer{
-			From:     from,
-			To:       to,
+			From:     eos.AccountName(from),
+			To:       eos.AccountName(to),
 			Quantity: quantity,
 			Memo:     memo,
 		}),
