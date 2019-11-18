@@ -6,24 +6,24 @@ import (
 
 // NewMessage is an action representing a simple message to be posted
 // through the chain network.
-func CreateMessage(msg *Message) *eos.Action {
+func CreateMessage(permType string, msg *Message) *eos.Action {
 	a := &eos.Action{
 		Account: ForumAN,
 		Name:    ActN("createmssg"),
 		Authorization: []eos.PermissionLevel{
-			{Actor: msg.Id.Author, Permission: eos.PermissionName("posting")},
+			{Actor: msg.Id.Author, Permission: eos.PermissionName(permType)},
 		},
 		ActionData: eos.NewActionData(msg),
 	}
 	return a
 }
 
-func UpdateMessage(msg *Message) *eos.Action {
+func UpdateMessage(permType string, msg *Message) *eos.Action {
 	a := &eos.Action{
 		Account: ForumAN,
 		Name:    ActN("updatemssg"),
 		Authorization: []eos.PermissionLevel{
-			{Actor: msg.Id.Author, Permission: eos.PermissionName("posting")},
+			{Actor: msg.Id.Author, Permission: eos.PermissionName(permType)},
 		},
 		ActionData: eos.NewActionData(msg),
 	}

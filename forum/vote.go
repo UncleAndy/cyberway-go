@@ -6,12 +6,12 @@ import (
 
 // NewVote is an action representing a simple vote to be broadcast
 // through the chain network.
-func NewVote(voter, contentAuthor, contentPermlink string, weight int) *eos.Action {
+func NewVote(permType, voter, contentAuthor, contentPermlink string, weight int) *eos.Action {
 	a := &eos.Action{
 		Account: ForumAN,
 		Name:    ActN("upvote"),
 		Authorization: []eos.PermissionLevel{
-			{Actor: eos.AccountName(voter), Permission: eos.PermissionName("posting")},
+			{Actor: eos.AccountName(voter), Permission: eos.PermissionName(permType)},
 		},
 		ActionData: eos.NewActionData(Vote{
 			Voter:        	eos.AccountName(voter),
