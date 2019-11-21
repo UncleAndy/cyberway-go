@@ -48,5 +48,5 @@ type Message struct {
 	JsonMetadata 	string   					`json:"jsonmetadata"`
 
 	CuratorsPrcnt 	uint16      				`json:"curators_prcnt,ommitempty"`
-	MaxPayout     	*string    					`json:"max_payout,ommitempty" eos:"optional"`
+	MaxPayout     	*eos.Asset 					`json:"max_payout,ommitempty" eos:"optional"`
 }
