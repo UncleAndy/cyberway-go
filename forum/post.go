@@ -6,7 +6,7 @@ import (
 
 // NewMessage is an action representing a simple message to be posted
 // through the chain network.
-func CreateMessage(permType string, msg *Message) *eos.Action {
+func CreateMessage(permType string, msg *CreateMessageData) *eos.Action {
 	a := &eos.Action{
 		Account: ForumAN,
 		Name:    ActN("createmssg"),
@@ -18,7 +18,7 @@ func CreateMessage(permType string, msg *Message) *eos.Action {
 	return a
 }
 
-func UpdateMessage(permType string, msg *Message) *eos.Action {
+func UpdateMessage(permType string, msg *UpdateMessageData) *eos.Action {
 	a := &eos.Action{
 		Account: ForumAN,
 		Name:    ActN("updatemssg"),
@@ -31,7 +31,7 @@ func UpdateMessage(permType string, msg *Message) *eos.Action {
 }
 
 // Post represents the `eosio.forum::post` action.
-type Message struct {
+type CreateMessageData struct {
 	Id       		eos.MssgId 					`json:"message_id"`
 	ParentId 		eos.MssgId 					`json:"parent_id"`
 
@@ -49,4 +49,15 @@ type Message struct {
 
 	CuratorsPrcnt 	uint16      				`json:"curators_prcnt,ommitempty"`
 	MaxPayout     	string 						`json:"max_payout,ommitempty"`
+}
+
+type UpdateMessageData struct {
+	Id       		eos.MssgId 					`json:"message_id"`
+
+	Header   		string 						`json:"headermssg"`
+	Body     		string 						`json:"bodymssg"`
+	Language 		string 						`json:"languagemssg"`
+
+	Tags         	[]string 					`json:"tags"`
+	JsonMetadata 	string   					`json:"jsonmetadata"`
 }
