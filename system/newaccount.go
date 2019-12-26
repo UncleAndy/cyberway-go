@@ -7,12 +7,12 @@ import (
 
 // NewNewAccount returns a `newaccount` action that lives on the
 // `eosio.system` contract.
-func NewNewAccount(creator, newAccount eos.AccountName, publicKey ecc.PublicKey) *eos.Action {
+func NewNewAccount(creator, newAccount eos.AccountName, ownerKey, activeKey, postingKey ecc.PublicKey, permission string) *eos.Action {
 	return &eos.Action{
-		Account: AN("eosio"),
+		Account: AN("cyber"),
 		Name:    ActN("newaccount"),
 		Authorization: []eos.PermissionLevel{
-			{Actor: creator, Permission: PN("active")},
+			{Actor: creator, Permission: PN(permission)},
 		},
 		ActionData: eos.NewActionData(NewAccount{
 			Creator: creator,
@@ -21,7 +21,7 @@ func NewNewAccount(creator, newAccount eos.AccountName, publicKey ecc.PublicKey)
 				Threshold: 1,
 				Keys: []eos.KeyWeight{
 					{
-						PublicKey: publicKey,
+						PublicKey: ownerKey,
 						Weight:    1,
 					},
 				},
@@ -31,7 +31,17 @@ func NewNewAccount(creator, newAccount eos.AccountName, publicKey ecc.PublicKey)
 				Threshold: 1,
 				Keys: []eos.KeyWeight{
 					{
-						PublicKey: publicKey,
+						PublicKey: activeKey,
+						Weight:    1,
+					},
+				},
+				Accounts: []eos.PermissionLevelWeight{},
+			},
+			Posting: eos.Authority{
+				Threshold: 1,
+				Keys: []eos.KeyWeight{
+					{
+						PublicKey: postingKey,
 						Weight:    1,
 					},
 				},
@@ -46,7 +56,7 @@ func NewNewAccount(creator, newAccount eos.AccountName, publicKey ecc.PublicKey)
 // delegates full control of the new account to an already existing account.
 func NewDelegatedNewAccount(creator, newAccount eos.AccountName, delegatedTo eos.AccountName) *eos.Action {
 	return &eos.Action{
-		Account: AN("eosio"),
+		Account: AN("cyber"),
 		Name:    ActN("newaccount"),
 		Authorization: []eos.PermissionLevel{
 			{Actor: creator, Permission: PN("active")},
@@ -80,6 +90,19 @@ func NewDelegatedNewAccount(creator, newAccount eos.AccountName, delegatedTo eos
 					},
 				},
 			},
+			Posting: eos.Authority{
+				Threshold: 1,
+				Keys:      []eos.KeyWeight{},
+				Accounts: []eos.PermissionLevelWeight{
+					eos.PermissionLevelWeight{
+						Permission: eos.PermissionLevel{
+							Actor:      delegatedTo,
+							Permission: PN("posting"),
+						},
+						Weight: 1,
+					},
+				},
+			},
 		}),
 	}
 }
@@ -87,9 +110,9 @@ func NewDelegatedNewAccount(creator, newAccount eos.AccountName, delegatedTo eos
 // NewCustomNewAccount returns a `newaccount` action that lives on the
 // `eosio.system` contract. You can specify your own `owner` and
 // `active` permissions.
-func NewCustomNewAccount(creator, newAccount eos.AccountName, owner, active eos.Authority) *eos.Action {
+func NewCustomNewAccount(creator, newAccount eos.AccountName, owner, active, posting eos.Authority) *eos.Action {
 	return &eos.Action{
-		Account: AN("eosio"),
+		Account: AN("cyber"),
 		Name:    ActN("newaccount"),
 		Authorization: []eos.PermissionLevel{
 			{Actor: creator, Permission: PN("active")},
@@ -99,6 +122,7 @@ func NewCustomNewAccount(creator, newAccount eos.AccountName, owner, active eos.
 			Name:    newAccount,
 			Owner:   owner,
 			Active:  active,
+			Posting: posting,
 		}),
 	}
 }
@@ -111,4 +135,5 @@ type NewAccount struct {
 	Name    eos.AccountName `json:"name"`
 	Owner   eos.Authority   `json:"owner"`
 	Active  eos.Authority   `json:"active"`
+	Posting  eos.Authority   `json:"posting"`
 }
