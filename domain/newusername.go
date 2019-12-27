@@ -6,7 +6,7 @@ import (
 
 // NewNewAccount returns a `newusername` action that lives on the
 // `eosio.system` contract.
-func NewNewUserName(creator, owner, name, permission string) *eos.Action {
+func NewNewUserName(creator, creatorName, owner, name, permission string) *eos.Action {
 	return &eos.Action{
 		Account: eos.AN("cyber.domain"),
 		Name:    eos.ActN("newusername"),
@@ -14,7 +14,7 @@ func NewNewUserName(creator, owner, name, permission string) *eos.Action {
 			{Actor: eos.AccountName(creator), Permission: eos.PN(permission)},
 		},
 		ActionData: eos.NewActionData(NewUserName{
-			Creator: eos.AccountName(creator),
+			Creator: eos.AccountName(creatorName),
 			Owner:   eos.AccountName(owner),
 			Name:    name,
 		}),
