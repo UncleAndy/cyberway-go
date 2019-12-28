@@ -10,9 +10,9 @@ func NewTokenOpen(creator, owner string, symbol eos.Symbol, permission string) *
 			{Actor: AN(creator), Permission: PN(permission)},
 		},
 		ActionData: eos.NewActionData(Open{
-			RamPayer: eos.AccountName(creator),
 			Owner:    eos.AccountName(owner),
 			Symbol:   symbol,
+			RamPayer: eos.AccountName(creator),
 		}),
 	}
 }
@@ -25,16 +25,16 @@ func NewVestingOpen(creator, owner string, symbol eos.Symbol, permission string)
 			{Actor: AN(creator), Permission: PN(permission)},
 		},
 		ActionData: eos.NewActionData(Open{
-			RamPayer: eos.AccountName(creator),
 			Owner:    eos.AccountName(owner),
 			Symbol:   symbol,
+			RamPayer: eos.AccountName(creator),
 		}),
 	}
 }
 
 // Create represents the `create` struct on the `eosio.token` contract.
 type Open struct {
-	RamPayer	eos.AccountName		`json:"ram_payer"`
 	Owner		eos.AccountName		`json:"owner"`
 	Symbol		eos.Symbol			`json:"symbol"`
+	RamPayer	eos.AccountName		`json:"ram_payer"`
 }
