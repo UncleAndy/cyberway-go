@@ -9,13 +9,13 @@ import (
 //
 // usingPermission needs to be `owner` if you want to modify the
 // `owner` authorization, otherwise `active` will do for the rest.
-func NewUpdateAuth(account eos.AccountName, permission, parent eos.PermissionName, authority eos.Authority, usingPermission eos.PermissionName) *eos.Action {
+func NewUpdateAuth(account eos.AccountName, permission, parent eos.PermissionName, authority eos.Authority, usingAccount eos.AccountName, usingPermission eos.PermissionName) *eos.Action {
 	a := &eos.Action{
 		Account: AN("cyber"),
 		Name:    ActN("updateauth"),
 		Authorization: []eos.PermissionLevel{
 			{
-				Actor:      account,
+				Actor:      usingAccount,
 				Permission: usingPermission,
 			},
 		},

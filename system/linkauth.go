@@ -10,14 +10,14 @@ import eos "github.com/UncleAndy/cyberway-go"
 // `requiredPermission` to sign transactions for `code::actionName`
 // and not rely on your `active` (which might be more sensitive as it
 // can sign anything) for the given operation.
-func NewLinkAuth(account, code eos.AccountName, actionName eos.ActionName, requiredPermission eos.PermissionName) *eos.Action {
+func NewLinkAuth(account, code eos.AccountName, actionName eos.ActionName, requiredPermission eos.PermissionName, usingAccount eos.AccountName, usingPermission eos.PermissionName) *eos.Action {
 	a := &eos.Action{
 		Account: AN("cyber"),
 		Name:    ActN("linkauth"),
 		Authorization: []eos.PermissionLevel{
 			{
-				Actor:      account,
-				Permission: eos.PermissionName("active"),
+				Actor:      usingAccount,
+				Permission: usingPermission,
 			},
 		},
 		ActionData: eos.NewActionData(LinkAuth{
