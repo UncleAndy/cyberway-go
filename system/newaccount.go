@@ -7,7 +7,7 @@ import (
 
 // NewNewAccount returns a `newaccount` action that lives on the
 // `eosio.system` contract.
-func NewNewAccount(creator, newAccount eos.AccountName, ownerKey, activeKey, postingKey ecc.PublicKey, permission string) *eos.Action {
+func NewNewAccount(creator, newAccount eos.AccountName, ownerKey, activeKey ecc.PublicKey, permission string) *eos.Action {
 	return &eos.Action{
 		Account: AN("cyber"),
 		Name:    ActN("newaccount"),
@@ -32,16 +32,6 @@ func NewNewAccount(creator, newAccount eos.AccountName, ownerKey, activeKey, pos
 				Keys: []eos.KeyWeight{
 					{
 						PublicKey: activeKey,
-						Weight:    1,
-					},
-				},
-				Accounts: []eos.PermissionLevelWeight{},
-			},
-			Posting: eos.Authority{
-				Threshold: 1,
-				Keys: []eos.KeyWeight{
-					{
-						PublicKey: postingKey,
 						Weight:    1,
 					},
 				},
@@ -90,19 +80,6 @@ func NewDelegatedNewAccount(creator, newAccount eos.AccountName, delegatedTo eos
 					},
 				},
 			},
-			Posting: eos.Authority{
-				Threshold: 1,
-				Keys:      []eos.KeyWeight{},
-				Accounts: []eos.PermissionLevelWeight{
-					eos.PermissionLevelWeight{
-						Permission: eos.PermissionLevel{
-							Actor:      delegatedTo,
-							Permission: PN("posting"),
-						},
-						Weight: 1,
-					},
-				},
-			},
 		}),
 	}
 }
@@ -122,7 +99,6 @@ func NewCustomNewAccount(creator, newAccount eos.AccountName, owner, active, pos
 			Name:    newAccount,
 			Owner:   owner,
 			Active:  active,
-			Posting: posting,
 		}),
 	}
 }
@@ -135,5 +111,4 @@ type NewAccount struct {
 	Name    eos.AccountName `json:"name"`
 	Owner   eos.Authority   `json:"owner"`
 	Active  eos.Authority   `json:"active"`
-	Posting  eos.Authority   `json:"posting"`
 }
