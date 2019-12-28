@@ -12,7 +12,7 @@ func NewOpen(creator, owner string, symbol eos.Symbol, permission string) *eos.A
 		ActionData: eos.NewActionData(Open{
 			RamPayer: eos.AccountName(creator),
 			Owner:    eos.AccountName(owner),
-			Symbol:   symbol.String(),
+			Symbol:   symbol,
 		}),
 	}
 }
@@ -21,5 +21,5 @@ func NewOpen(creator, owner string, symbol eos.Symbol, permission string) *eos.A
 type Open struct {
 	RamPayer	eos.AccountName		`json:"ram_payer"`
 	Owner		eos.AccountName		`json:"owner"`
-	Symbol		string				`json:"symbol"`
+	Symbol		eos.Symbol			`json:"symbol"`
 }
