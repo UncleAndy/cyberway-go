@@ -12,7 +12,7 @@ import eos "github.com/UncleAndy/cyberway-go"
 // can sign anything) for the given operation.
 func NewLinkAuth(account, code eos.AccountName, actionName eos.ActionName, requiredPermission eos.PermissionName) *eos.Action {
 	a := &eos.Action{
-		Account: AN("eosio"),
+		Account: AN("cyber"),
 		Name:    ActN("linkauth"),
 		Authorization: []eos.PermissionLevel{
 			{
