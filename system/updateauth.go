@@ -11,7 +11,7 @@ import (
 // `owner` authorization, otherwise `active` will do for the rest.
 func NewUpdateAuth(account eos.AccountName, permission, parent eos.PermissionName, authority eos.Authority, usingPermission eos.PermissionName) *eos.Action {
 	a := &eos.Action{
-		Account: AN("eosio"),
+		Account: AN("cyber"),
 		Name:    ActN("updateauth"),
 		Authorization: []eos.PermissionLevel{
 			{
