@@ -22,6 +22,6 @@ func NewProvideBW(account, provider eos.AccountName, usingAccount eos.AccountNam
 }
 
 type ProvideBW struct {
-	Account     eos.AccountName    `json:"account"`
 	Provider    eos.AccountName    `json:"provider"`
+	Account     eos.AccountName    `json:"account"`
 }
