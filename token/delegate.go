@@ -35,8 +35,8 @@ func NewUnDelegateVesting(from, to string, val eos.Asset, interest uint16, permi
 }
 
 type Delegate struct {
-	From			eos.AccountName		`json:"from"`
 	To				eos.AccountName		`json:"to"`
+	From			eos.AccountName		`json:"from"`
 	Quantity		eos.Asset			`json:"quantity"`
 	InterestRate	uint16				`json:"interest_rate"`
 }
