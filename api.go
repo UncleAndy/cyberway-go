@@ -384,7 +384,17 @@ func (api *API) PushTransaction(tx *PackedTransaction) (out *PushTransactionFull
 	return
 }
 
+func (api *API) PushTransactionData(tx interface{}) (out *PushTransactionFullResp, err error) {
+	err = api.call("chain", "push_transaction", tx, &out)
+	return
+}
+
 func (api *API) PushTransactionRaw(tx *PackedTransaction) (out json.RawMessage, err error) {
+	err = api.call("chain", "push_transaction", tx, &out)
+	return
+}
+
+func (api *API) PushTransactionDataRaw(tx interface{}) (out json.RawMessage, err error) {
 	err = api.call("chain", "push_transaction", tx, &out)
 	return
 }
